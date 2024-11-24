@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgxEchartsDirective, provideEcharts } from 'ngx-echarts';
+import { OnInit } from '@angular/core';
 
 @Component({
   standalone: true,
@@ -10,10 +11,11 @@ import { NgxEchartsDirective, provideEcharts } from 'ngx-echarts';
   styleUrls: ['./compound-interest.component.scss'],
   imports: [CommonModule, FormsModule, NgxEchartsDirective],
   providers: [
-    provideEcharts(), // Ensures the NGX_ECHARTS_CONFIG is provided
+    provideEcharts(), 
   ],
 })
-export class CompoundInterestComponent {
+export class CompoundInterestComponent implements OnInit{
+
   principal: number = 0;
   rate: number = 0;
   time: number = 0;
@@ -34,6 +36,10 @@ export class CompoundInterestComponent {
       },
     ],
   };
+
+  ngOnInit(): void {
+    console.log("Compound Interest Component Loaded");
+  }
 
   calculateCompoundInterest() {
     const years: string[] = [];
