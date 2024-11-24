@@ -1,0 +1,47 @@
+<div class="container">
+    <h1>Compound Interest Calculator</h1>
+    <form class="form">
+      <div class="form-group">
+        <label for="principal">Principal Amount:</label>
+        <input
+          id="principal"
+          type="number"
+          [(ngModel)]="principal"
+          name="principal"
+          class="input"
+          placeholder="Enter principal amount"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="rate">Annual Interest Rate (%):</label>
+        <input
+          id="rate"
+          type="number"
+          [(ngModel)]="rate"
+          name="rate"
+          class="input"
+          placeholder="Enter interest rate"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="time">Time (Years):</label>
+        <input
+          id="time"
+          type="number"
+          [(ngModel)]="time"
+          name="time"
+          class="input"
+          placeholder="Enter number of years"
+        />
+      </div>
+  
+      <button type="button" class="btn" (click)="calculateCompoundInterest()">Calculate</button>
+    </form>
+  
+    <div *ngIf="chartOptions.series[0].data.length" class="chart-container">
+      <div echarts [options]="chartOptions" class="chart"></div>
+    </div>
+  </div>
+  

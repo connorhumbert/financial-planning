@@ -1,6 +1,18 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
+import { provideRouter, RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app/app.component';
+import { importProvidersFrom } from '@angular/core';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+import { CompoundInterestComponent } from './app/compound-interest/compound-interest.component';
+
+const routes: Routes = [
+  { path: '', component: AppComponent },
+  { path: 'compound-interest', component: CompoundInterestComponent },
+];
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideRouter(routes),
+    importProvidersFrom(RouterModule),
+  ],
+});
