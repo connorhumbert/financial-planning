@@ -1,0 +1,90 @@
+<div class="page-layout">
+    <!-- Left-side container -->
+    <div class="container">
+      <h1>Purchase</h1>
+      <form class="form">
+        <div class="form-group">
+          <label for="purchasePrice">Purchase Price:</label>
+          <input
+            id="purchasePrice"
+            type="number"
+            [(ngModel)]="purchasePrice"
+            name="purchasePrice"
+            class="input"
+            placeholder="Enter purchase price"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="monthlyPayment">Monthly Payment:</label>
+          <input
+            id="monthlyPayment"
+            type="number"
+            [(ngModel)]="monthlyPayment"
+            name="monthlyPayment"
+            class="input"
+            placeholder="Enter monthly payment"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="downPayment">Down Payment:</label>
+          <input
+            id="downPayment"
+            type="number"
+            [(ngModel)]="downPayment"
+            name="downPayment"
+            class="input"
+            placeholder="Enter down payment"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="rate">Interest Rate (%):</label>
+          <input
+            id="rate"
+            type="number"
+            [(ngModel)]="rate"
+            name="rate"
+            class="input"
+            placeholder="Enter interest rate"
+          />
+        </div>
+  
+        <button type="button" class="btn" (click)="calculateCompoundInterest()">Calculate</button>
+      </form>
+    </div>
+  
+    <!-- Right-side container (identical form) -->
+    <div class="container">
+      <h1>Rent</h1>
+      <form class="form">
+        <div class="form-group">
+          <label for="rentPurchasePrice">Purchase Price:</label>
+          <input
+            id="rentPurchasePrice"
+            type="number"
+            [(ngModel)]="rentPurchasePrice"
+            name="rentPurchasePrice"
+            class="input"
+            placeholder="Enter purchase price"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="rentMonthlyPayment">Monthly Payment:</label>
+          <input
+            id="rentMonthlyPayment"
+            type="number"
+            [(ngModel)]="rentMonthlyPayment"
+            name="rentMonthlyPayment"
+            class="input"
+            placeholder="Enter monthly payment"
+          />
+        </div>
+  
+        <button type="button" class="btn" (click)="calculateCompoundInterest()">Calculate</button>
+      </form>
+    </div>
+  </div>
+  
