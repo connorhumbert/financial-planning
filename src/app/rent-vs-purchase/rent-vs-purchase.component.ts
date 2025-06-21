@@ -66,12 +66,12 @@ export class RentVsPurchaseComponent implements OnInit {
         );
     //console.log("base purchase price:" + this.purchasePrice);
     let taxCap: number = 1000000 *  (this.rate/100) * (this.taxBracket/100);
-    console.log("tax cap:" + taxCap);
+    //console.log("tax cap:" + taxCap);
     //Compute Tax Savings
     let taxSavings: number = this.purchasePrice * (this.rate/100) * (this.taxBracket/100);
-    console.log("tax savings:" + taxCap);
+    //console.log("tax savings:" + taxCap);
     if (taxSavings > taxCap) taxSavings = taxCap;
-    console.log("tax savings after capping :" + taxCap);
+    //console.log("tax savings after capping :" + taxCap);
     this.purchasePrice = 
     ((this.rentMonthlyPayment * 12) + taxSavings) / (
       (this.rate/100) + (this.realEstateTax/100) + (this.homeOwnerIns)
