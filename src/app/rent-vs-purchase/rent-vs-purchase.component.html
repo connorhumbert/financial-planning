@@ -31,14 +31,11 @@
       <form class="form">
         <!-- Always visible -->
         <div class="form-group">
-          <label for="purchasePrice"
-            >Max Purchase Price:</label
-          >
+          <label for="purchasePrice">Max Purchase Price:</label>
           <input
             id="purchasePrice"
-            type="number"
-            [(ngModel)]="purchasePrice"
-            name="purchasePrice"
+            type="text"
+            [value]="formatNumberWithCommas(purchasePrice)"
             class="input"
             disabled
           />
@@ -64,36 +61,6 @@
 
         <!-- Advanced Options -->
         <div *ngIf="showAdvanced">
-
-          <div class="form-group">
-            <label for="realEstateTax"
-              >Real Estate Tax (% of purchase price):</label
-            >
-            <input
-              id="realEstateTax"
-              type="number"
-              [(ngModel)]="realEstateTax"
-              name="realEstateTax"
-              class="input"
-              placeholder="Enter real estate tax"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="homeOwnerIns"
-              >Home Owner Insurance (1/4 of 1% of purchase price):</label
-            >
-            <input
-              id="homeOwnerIns"
-              type="number"
-              [(ngModel)]="homeOwnerIns"
-              name="homeOwnerIns"
-              class="input"
-              placeholder="Enter home owner insurance"
-              disabled
-            />
-          </div>
-
           <div class="form-group">
             <label for="rate">Interest Rate (%):</label>
             <input
@@ -104,51 +71,6 @@
               class="input"
               placeholder="Enter interest rate"
               (ngModelChange)="onRentMonthlyPaymentChange($event)"
-            />
-          </div>
-
-          <div class="form-group">
-            <label class="label-with-info" for="taxSavings">
-              Tax Savings:
-              <span
-                class="info-icon"
-                tabindex="0"
-                title="This is calculated by purchase price * interest rate * tax bracket"
-              >
-                ℹ️
-              </span>
-            </label>
-            <input
-              id="taxSavings"
-              type="number"
-              [(ngModel)]="taxSavings"
-              name="taxSavings"
-              class="input"
-              disabled
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="pledgeAmount">Pledge Amount at 39% (ZERO down payment):</label>
-            <input
-              id="pledgeAmount"
-              type="number"
-              [(ngModel)]="pledgeAmount"
-              name="pledgeAmount"
-              class="input"
-              disabled
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="incomeFromPledge">Income From Pledge:</label>
-            <input
-              id="incomeFromPledge"
-              type="number"
-              [(ngModel)]="incomeFromPledge"
-              name="incomeFromPledge"
-              class="input"
-              disabled
             />
           </div>
 
@@ -165,6 +87,73 @@
                 {{ value }}
               </option>
             </select>
+          </div>
+
+          <div class="form-group">
+            <label class="label-with-info" for="taxSavings">
+              Tax Savings:
+            </label>
+            <input
+              id="taxSavings"
+              type="text"
+              [value]="formatNumberWithCommas(taxSavings)"
+              class="input"
+              disabled
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="pledgeAmount"
+              >Pledge Amount at 39% (ZERO down payment):</label
+            >
+            <input
+              id="pledgeAmount"
+              type="text"
+              [value]="formatNumberWithCommas(pledgeAmount)"
+              class="input"
+              disabled
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="incomeFromPledge">Income From Pledge:</label>
+            <input
+              id="incomeFromPledge"
+              type="text"
+              [value]="formatNumberWithCommas(incomeFromPledge)"
+              class="input"
+              disabled
+            />
+          </div>
+          <div class="form-group">
+            <label for="realEstateTax"
+              >Real Estate Tax (% of purchase price):</label
+            >
+            <input
+              id="realEstateTax"
+              type="number"
+              [ngModel]="realEstateTax"
+              (ngModelChange)="realEstateTaxChange($event)"
+              name="realEstateTax"
+              class="input"
+              placeholder="Enter real estate tax"
+              disabled
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="homeOwnerIns"
+              >Home Owner Insurance (1/4 of 1% of purchase price):</label
+            >
+            <input
+              id="homeOwnerIns"
+              type="number"
+              [(ngModel)]="homeOwnerIns"
+              name="homeOwnerIns"
+              class="input"
+              placeholder="Enter home owner insurance"
+              disabled
+            />
           </div>
         </div>
       </form>
@@ -178,14 +167,11 @@
       <form class="form">
         <!-- Always visible -->
         <div class="form-group">
-          <label for="purchasePrice"
-            >Max Purchase Price:</label
-          >
+          <label for="purchasePrice">Max Purchase Price:</label>
           <input
             id="downPaymentPurchasePrice"
-            type="number"
-            [(ngModel)]="downPaymentPurchasePrice"
-            name="downPaymentPurchasePrice"
+            type="text"
+            [value]="formatNumberWithCommas(downPaymentPurchasePrice)"
             class="input"
             disabled
           />
@@ -212,49 +198,6 @@
         <!-- Advanced Options -->
         <div *ngIf="showAdvanced">
           <div class="form-group">
-            <label for="mortgageAmountDownPayment"
-              >Mortgage Amount at 80% Financing:</label
-            >
-            <input
-              id="mortgageAmountDownPayment"
-              type="number"
-              [(ngModel)]="mortgageAmountDownPayment"
-              name="mortgageAmountDownPayment"
-              class="input"
-              disabled
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="realEstateTax"
-              >Real Estate Tax (% of purchase price):</label
-            >
-            <input
-              id="realEstateTax"
-              type="number"
-              [(ngModel)]="realEstateTax"
-              name="realEstateTax"
-              class="input"
-              placeholder="Enter real estate tax"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="homeOwnerIns"
-              >Home Owner Insurance (1/4 of 1% of purchase price):</label
-            >
-            <input
-              id="homeOwnerIns"
-              type="number"
-              [(ngModel)]="homeOwnerIns"
-              name="homeOwnerIns"
-              class="input"
-              placeholder="Enter home owner insurance"
-              disabled
-            />
-          </div>
-
-          <div class="form-group">
             <label for="rate">Interest Rate (%):</label>
             <input
               id="rate"
@@ -264,39 +207,6 @@
               class="input"
               placeholder="Enter interest rate"
               (ngModelChange)="onRentMonthlyPaymentChange($event)"
-            />
-          </div>
-
-          <div class="form-group">
-            <label class="label-with-info" for="downPaymentTaxSavings">
-              Tax Savings:
-              <span
-                class="info-icon"
-                tabindex="0"
-                title="This is calculated by purchase price * interest rate * tax bracket"
-              >
-                ℹ️
-              </span>
-            </label>
-            <input
-              id="downPaymentTaxSavings"
-              type="number"
-              [(ngModel)]="downPaymentTaxSavings"
-              name="downPaymentTaxSavings"
-              class="input"
-              disabled
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="downPayment">Down Payment at 20%:</label>
-            <input
-              id="downPayment"
-              type="number"
-              [(ngModel)]="downPayment"
-              name="downPayment"
-              class="input"
-              disabled
             />
           </div>
 
@@ -314,8 +224,78 @@
               </option>
             </select>
           </div>
+
+          <div class="form-group">
+            <label class="label-with-info" for="downPaymentTaxSavings">
+              Tax Savings:
+            </label>
+            <input
+              id="downPaymentTaxSavings"
+              type="text"
+              [value]="formatNumberWithCommas(downPaymentTaxSavings)"
+              class="input"
+              disabled
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="downPayment">Down Payment at 20%:</label>
+            <input
+              id="downPayment"
+              type="text"
+              [value]="formatNumberWithCommas(downPayment)"
+              class="input"
+              disabled
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="mortgageAmountDownPayment"
+              >Mortgage Amount at 80% Financing:</label
+            >
+            <input
+              id="mortgageAmountDownPayment"
+              type="text"
+              [value]="formatNumberWithCommas(mortgageAmountDownPayment)"
+              class="input"
+              disabled
+            />
+          </div>
+          <div class="form-group">
+            <label for="realEstateTax"
+              >Real Estate Tax (% of purchase price):</label
+            >
+            <input
+              id="realEstateTax"
+              type="number"
+              [ngModel]="realEstateTax"
+              (ngModelChange)="realEstateTaxChange($event)"
+              name="realEstateTax"
+              class="input"
+              placeholder="Enter real estate tax"
+              disabled
+            />
+          </div>
+          <div class="form-group">
+            <label for="homeOwnerIns"
+              >Home Owner Insurance (1/4 of 1% of purchase price):</label
+            >
+            <input
+              id="homeOwnerIns"
+              type="number"
+              [(ngModel)]="homeOwnerIns"
+              name="homeOwnerIns"
+              class="input"
+              placeholder="Enter home owner insurance"
+              disabled
+            />
+          </div>
         </div>
       </form>
     </div>
   </div>
+</div>
+
+<div class="disclaimer">
+  This tool is for illustrative purposes only and does not constitute financial advice.
 </div>

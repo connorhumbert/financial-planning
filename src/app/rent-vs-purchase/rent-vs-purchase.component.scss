@@ -8,22 +8,6 @@ body {
   height: 100vh;
 }
 
-.page-layout {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 4rem;
-  width: 100%;
-  max-width: 1400px;
-  padding: 0 2rem;
-  box-sizing: border-box;
-}
-
-.side-container,
-.middle-container {
-  display: flex;
-  justify-content: center;
-}
 
 .container {
   width: 100%;
@@ -111,4 +95,29 @@ label {
 .info-icon:focus {
   outline: 2px solid #007bff;
   outline-offset: 2px;
+}
+
+.page-layout {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4rem; /* spacing between columns */
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.side-container,
+.middle-container {
+  flex: 0 0 350px; /* fixed width */
+}
+
+.disclaimer {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #888;
+  pointer-events: none;
+  user-select: none;
 }

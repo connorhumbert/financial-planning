@@ -47,14 +47,24 @@ export class RentVsPurchaseComponent implements OnInit {
     this.onRentMonthlyPaymentChange("");
   }
 
+  realEstateTaxChange(value: number): void {
+    this.realEstateTax = value;
+    console.log('Real Estate Tax changed to:', value);
+    this.onRentMonthlyPaymentChange("");
+  }
 
-  onRentMonthlyPaymentChange(newValue: string): void {
+  formatNumberWithCommas(value: number | undefined | null): string {
+    if (value == null) return '';
+    return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  }
+
+  onRentMonthlyPaymentChange(value: String): void {
     // Base Purchase Price without tax savings
     this.purchasePrice = 
       (this.rentMonthlyPayment * 12) / (
         (this.rate/100) + (this.realEstateTax/100) + (this.homeOwnerIns)
         );
-    console.log("base purchase price:" + this.purchasePrice);
+    //console.log("base purchase price:" + this.purchasePrice);
     let taxCap: number = 1000000 *  (this.rate/100) * (this.taxBracket/100);
     console.log("tax cap:" + taxCap);
     //Compute Tax Savings
@@ -66,7 +76,7 @@ export class RentVsPurchaseComponent implements OnInit {
     ((this.rentMonthlyPayment * 12) + taxSavings) / (
       (this.rate/100) + (this.realEstateTax/100) + (this.homeOwnerIns)
       );
-    console.log("purchase price before pledge" + this.purchasePrice);
+    //console.log("purchase price before pledge" + this.purchasePrice);
 
 
     let purchasePriceBeforePledgeCalculations = this.purchasePrice;
