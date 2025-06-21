@@ -101,18 +101,18 @@ label {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 4rem; /* spacing between columns */
+  gap: 4rem;
   padding: 2rem;
   box-sizing: border-box;
 }
 
 .side-container,
 .middle-container {
-  flex: 0 0 350px; /* fixed width */
+  flex: 0 0 350px;
 }
 
 .disclaimer {
-  //position: fixed;
+  position: fixed;
   bottom: 10px;
   width: 100%;
   text-align: center;
@@ -133,5 +133,10 @@ label {
   .middle-container {
     flex: 1 1 100%;
     max-width: 500px;
+  }
+
+  .disclaimer {
+    position: static;
+    margin-top: 2rem;
   }
 }
